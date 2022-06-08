@@ -2,11 +2,10 @@
 #define BOARD_HPP
 
 #include <assert.h>
-#include <vector>
-using std::vector;
 
-#include <memory>
-using std::shared_ptr;
+#include<utility>
+using std::make_pair;
+using std::pair;
 
 class Board
 {
@@ -14,9 +13,12 @@ private:
     int width, height;
 
 public:
-    Board(/* args */) = default;
-    Board(int width_in, int height_in);
-    ~Board();
+    Board(/* args */) ;
+    Board(int width_in, int height_in);    
+    ~Board(){};
+
+    /* methods */
+    pair<int, int> get_dimensions() const;
 };
 
 #endif // BOARD_HPP

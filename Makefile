@@ -5,9 +5,14 @@ SOURCE_DIC = -I/src/
 
 
 
-main: main.cpp Board
-	$(CC) $(FLAGS) $(SOURCE_DIC) main.cpp -o main.out
+main: ./src/main.cpp Board.o Player.o Pong.o
+	$(CC) $(FLAGS) ./src/main.cpp ./board.o Pong.o Player.o -o main.out
 
+Board.o: ./src/board.cpp
+	$(CC) $(FLAGS) -c  ./src/board.cpp
 
-Board: board.cpp
-	$(CC) $(FLAGS) -o board board.cpp
+Player.o: ./src/Player.cpp
+	$(CC) $(FLAGS) -c  ./src/Player.cpp
+
+Pong.o : ./src/Pong.cpp
+	$(CC) $(FLAGS) -c  ./src/Pong.cpp

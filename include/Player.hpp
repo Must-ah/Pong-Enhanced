@@ -20,7 +20,7 @@ private:
 public:
     Player(/* args */);
     Player(int width, int height, int x, int y);
-    ~Player();
+    ~Player(){};
     pair<int,int> get_player_dimension();
     pair<int,int> get_player_position();
 };
