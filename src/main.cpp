@@ -1,4 +1,5 @@
-#include <board.hpp>
+#include "../include/board.hpp"
+
 
 int main(int argc, char const *argv[])
 {
