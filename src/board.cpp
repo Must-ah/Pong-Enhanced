@@ -1,8 +1,7 @@
 #include "../include/board.hpp"
 
-Board::Board()
+Board::Board() : width(800), height(600)
 {
-    Board{800, 600};
     assert(width > 0);
     assert(height > 0);
 }
