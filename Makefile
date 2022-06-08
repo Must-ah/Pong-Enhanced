@@ -20,5 +20,5 @@ Pong.o : ./src/Pong.cpp
 
 clean:
 	rm -f $(OUT_DIR)*.o $(OUT_DIR)*.out
-run: main
+run: clean main
 	$(OUT_DIR)main.out
