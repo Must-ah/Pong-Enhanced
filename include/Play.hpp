@@ -8,6 +8,7 @@
 
 
 #include "Pong.hpp"
+#include "Player.hpp"
 
 class Play
 {
@@ -31,6 +32,7 @@ public:
 
     /* methods */
     void render(Pong &pong);
+    void render(Player &player);
 };
 
 #endif

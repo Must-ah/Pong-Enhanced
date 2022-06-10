@@ -33,17 +33,28 @@ void Play::render(Pong &pong)
 {
     SDL_SetRenderDrawColor(renderer, 0x00, 0x00, 0x00, 255);
     SDL_RenderClear(renderer);
-    SDL_Delay(5 / 60);
-    Player human = pong.get_human_player();
-    const auto &[width, height] = human.get_player_dimension();
-    SDL_Rect human_SDL;
-    human_SDL.h = height;
-    human_SDL.w = 12;
-    human_SDL.x = 32;
-    human_SDL.y = (900 / 2) - (human_SDL.h / 2);
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-    SDL_RenderFillRect(renderer, &human_SDL);
+
+    Player human_player = pong.get_human_player();
+    render(human_player);
+    
+    Player ai = pong.get_AI_player();
+    render(ai);    
+
     SDL_RenderPresent(renderer);
+}
+
+void Play::render(Player &player)
+{    
+    const auto &[player_width, player_height] = player.get_player_dimension();
+    SDL_Rect player_SDL;
+    player_SDL.w = player_width;
+    player_SDL.h = player_height;
+    
+    const auto &[player_x, player_y] = player.get_player_position();
+    player_SDL.x = player_x;
+    player_SDL.y = player_y;
+    SDL_RenderFillRect(renderer, &player_SDL);
 }
 
 Play::~Play()
