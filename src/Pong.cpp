@@ -16,11 +16,10 @@ void Pong::init_new_game(int width_in, int height_in)
     init_players();
 }
 
-
 void Pong::init_board(int width_in, int height_in)
 {
     /* code */
-    board = Board {width_in, height_in};
+    board = Board{width_in, height_in};
     const auto &[width, height] = board.get_dimensions();
     assert(width > 0 && height > 0);
 }
@@ -40,9 +39,9 @@ void Pong::init_players()
         player_y};
     player_x = width - player_width - 32;
     AI_player = Player{player_width,
-              player_height,
-              player_x,
-              player_y};
+                       player_height,
+                       player_x,
+                       player_y};
 }
 
 void Pong::restart_game()
@@ -52,9 +51,35 @@ void Pong::restart_game()
     init_new_game(width, height);
 }
 
-
 pair<int, int> Pong::get_board_dimensions()
 {
     /* code */
     return board.get_dimensions();
+}
+
+Player Pong::get_AI_player()
+{
+    return AI_player;
+}
+
+Player Pong::get_human_player()
+{
+    return human_player;
+}
+pair<int, int> Pong::get_game_score()
+{
+    return game_score;
+}
+
+void Pong::set_game_score(pair<int, int> new_game_score)
+{
+    //const auto &[human_score, ai_score] = new_game_score;
+    int human_score = new_game_score.first;
+    int ai_score = new_game_score.second;
+    game_score.first = human_score;
+    game_score.second = ai_score;
+}
+void Pong::reset_game_score()
+{
+    game_score = make_pair<int,int>(0, 0);
 }
