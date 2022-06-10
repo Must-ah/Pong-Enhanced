@@ -6,8 +6,8 @@ OUT_DIR = ./build/
 SDL2 = -lSDL2 -lSDL2_ttf
 
 
-main: $(SRC_DIR)main.cpp Board.o Player.o Pong.o Play.o
-	$(CC) $(FLAGS) ./src/main.cpp $(OUT_DIR)board.o $(OUT_DIR)Pong.o $(OUT_DIR)Player.o $(OUT_DIR)Play.o $(SDL2) -o $(OUT_DIR)main.out
+main: $(SRC_DIR)main.cpp Board.o Player.o Pong.o Play.o Ball.o
+	$(CC) $(FLAGS) ./src/main.cpp $(OUT_DIR)board.o $(OUT_DIR)Pong.o $(OUT_DIR)Player.o $(OUT_DIR)Play.o $(OUT_DIR)Ball.o  $(SDL2) -o $(OUT_DIR)main.out
 
 Board.o: $(SRC_DIR)board.cpp
 	$(CC) $(FLAGS) -c  $(SRC_DIR)board.cpp -o $(OUT_DIR)board.o
@@ -17,6 +17,9 @@ Player.o: $(SRC_DIR)Player.cpp
 
 Pong.o : $(SRC_DIR)Pong.cpp
 	$(CC) $(FLAGS) -c  $(SRC_DIR)Pong.cpp -o $(OUT_DIR)Pong.o
+
+Ball.o : $(SRC_DIR)Ball.cpp
+	$(CC) $(FLAGS) -c  $(SRC_DIR)Ball.cpp -o $(OUT_DIR)Ball.o
 
 Play.o: $(SRC_DIR)Play.cpp
 	$(CC) $(FLAGS) -c  $(SRC_DIR)Play.cpp -o $(OUT_DIR)Play.o
