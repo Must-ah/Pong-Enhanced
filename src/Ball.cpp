@@ -21,5 +21,10 @@ void Ball::set_update_ball_position(pair<int, int> updated_position)
     ball_position.first = new_x;
     ball_position.second = new_y;
 }
+void Ball::update_ball_direction(int new_direction)
+{
+    direction = new_direction;
+}
+int Ball::get_ball_direction() { return direction; }
 
 Ball::~Ball() {}

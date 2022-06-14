@@ -1,11 +1,11 @@
 #include "../include/Player.hpp"
 
-Player::Player(/* args */) : player_dimension(make_pair(100, 150)), player_position(make_pair(400, 300))
+Player::Player(/* args */) : player_dimension(make_pair(100, 150)), player_position(make_pair(400, 300)), speed{22}
 {
     assert_player();
 }
 
-Player::Player(int width, int height, int x, int y) : player_dimension(make_pair(width, height)), player_position(make_pair(x, y))
+Player::Player(int width, int height, int x, int y, int speed) : player_dimension(make_pair(width, height)), player_position(make_pair(x, y)), speed{speed}
 {
     assert_player();
 }
@@ -26,4 +26,17 @@ pair<int, int> Player::get_player_dimension()
 pair<int, int> Player::get_player_position()
 {
     return player_position;
+}
+
+void Player::update_position(pair<int, int> new_position)
+{
+    player_position = new_position;
+}
+int Player::get_speed()
+{
+    return speed;
+}
+void Player::set_speed(int new_speed)
+{
+    speed = new_speed;
 }

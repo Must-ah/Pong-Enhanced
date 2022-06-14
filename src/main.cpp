@@ -25,8 +25,7 @@ int main(int argc, char const *argv[])
          << " height: " << height
          << endl;
 
-
-    
+    /*
     std::condition_variable cv;
     std::mutex cv_m;
     std::atomic<int> i{0};
@@ -69,6 +68,13 @@ int main(int argc, char const *argv[])
     t2.join();
     t3.join();
     t4.join();
+*/
+    bool should_i_keep_playing = play.is_running();
+    while (should_i_keep_playing)
+    {
+        should_i_keep_playing = play.is_running();
+        play.update_game_state(pong);
+    }
     play.~Play();
     return 0;
 }

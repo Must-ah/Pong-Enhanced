@@ -34,12 +34,14 @@ void Pong::center_players()
         player_width,
         player_height,
         player_x,
-        player_y};
+        player_y,
+        game_speed};
     player_x = width - player_width - 32;
     AI_player = Player{player_width,
                        player_height,
                        player_x,
-                       player_y};
+                       player_y,
+                       game_speed};
 }
 void Pong::init_players()
 {
@@ -53,12 +55,14 @@ void Pong::init_players()
         player_width,
         player_height,
         player_x,
-        player_y};
+        player_y,
+        game_speed};
     player_x = width - player_width - 32;
     AI_player = Player{player_width,
                        player_height,
                        player_x,
-                       player_y};
+                       player_y,
+                       game_speed};
 }
 
 void Pong::restart_game()
@@ -74,16 +78,16 @@ pair<int, int> Pong::get_board_dimensions()
     return board.get_dimensions();
 }
 
-Player Pong::get_AI_player()
+Player &Pong::get_AI_player()
 {
     return AI_player;
 }
 
-Player Pong::get_human_player()
+Player &Pong::get_human_player()
 {
     return human_player;
 }
-pair<int, int> Pong::get_game_score()
+pair<int, int> &Pong::get_game_score()
 {
     return game_score;
 }
@@ -104,17 +108,22 @@ void Pong::reset_game_score()
 void Pong::init_ball()
 {
     const auto &[board_width, board_height] = board.get_dimensions();
-    ball = Ball{16, 16, board_width / 2, board_height / 2, 22};
+    ball = Ball{16, 16, board_width / 2, board_height / 2, game_speed};
 }
-Ball Pong::get_ball() { return ball; }
+Ball &Pong::get_ball() { return ball; }
 
 void Pong::reset_game()
 {
     const auto &[board_width, board_height] = board.get_dimensions();
-    ball = Ball{16, 16, board_width / 2, board_height / 2, 22};
+    ball = Ball{16, 16, board_width / 2, board_height / 2, game_speed};
     center_players();
 }
 
+int Pong::get_speed() { return game_speed; }
+Board &Pong::get_board()
+{
+    return board;
+}
 void Pong::serve()
 {
     reset_game();
